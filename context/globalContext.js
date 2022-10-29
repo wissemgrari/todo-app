@@ -3,11 +3,12 @@ import { createContext, useReducer } from 'react';
 // Initialize the state
 const initialState = {
   darkTheme: true,
+  modalVisible: false,
   todos: [
-    { id: 0, title: 'First Todo', isCompleted: false },
-    { id: 1, title: 'Second Todo', isCompleted: false },
-    { id: 2, title: 'Third Todo', isCompleted: false },
-    { id: 3, title: 'Fourth Todo', isCompleted: false },
+    { id: '0', title: 'First Todo', isCompleted: false },
+    { id: '1', title: 'Second Todo', isCompleted: false },
+    { id: '2', title: 'Third Todo', isCompleted: false },
+    { id: '3', title: 'Fourth Todo', isCompleted: false },
   ],
 };
 
@@ -32,6 +33,11 @@ const reducers = (state, action) => {
             ? { ...todo, isCompleted: !todo.isCompleted }
             : todo
         ),
+      };
+    case 'MODAL_VISIBLE':
+      return {
+        ...state,
+        modalVisible: !state.modalVisible,
       };
     default:
       return state;

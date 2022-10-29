@@ -5,9 +5,9 @@ import { FlatList, StyleSheet, View } from 'react-native';
 import ListItem from './ListItem';
 
 export default function List() {
-  const { todos } = useContext(GlobalContext);
+  const { todos, modalVisible } = useContext(GlobalContext);
   return (
-    <View style={styles.list}>
+    <View style={[styles.list, { opacity: modalVisible ? 0.1 : null }]}>
       <FlatList
         data={todos}
         renderItem={({ item }) => <ListItem item={item} />}
