@@ -1,20 +1,29 @@
+import { StyleSheet, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import List from './components/List';
+import Navbar from './components/Navbar';
+import FloatButton from './components/FloatButton';
+import colors from './globalStyles/colors';
+import GlobalContextProvider from './context/globalContext';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>hello</Text>
-      <StatusBar style='auto' />
-    </View>
+    <GlobalContextProvider>
+      <View style={styles.container}>
+        <Navbar />
+        <List />
+        <FloatButton />
+        <StatusBar style='light' />
+      </View>
+    </GlobalContextProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    overflow: 'hidden',
+    backgroundColor: colors.darkBlue,
+    position: 'relative',
   },
 });
