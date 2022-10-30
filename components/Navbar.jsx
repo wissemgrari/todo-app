@@ -7,20 +7,27 @@ import {
 } from 'react-native';
 import colors from '../globalStyles/colors';
 import tw from 'twrnc';
-import { Ionicons, Octicons } from '@expo/vector-icons';
+import { Ionicons, Octicons, Feather } from '@expo/vector-icons';
+import { GlobalContext } from '../context/globalContext';
 
 export default function Navbar() {
+  const { darkTheme } = useContext(GlobalContext);
+
   return (
     <View style={styles.nav}>
       <View style={tw`p-4 flex flex-row items-center justify-between`}>
         <View style={tw`flex-row items-center`}>
           <Text style={styles.title}>Todo</Text>
-          <Octicons
-            style={tw`mt-1`}
-            name='tasklist'
-            size={26}
-            color={colors.secondary}
-          />
+          {darkTheme ? (
+            <Octicons
+              style={tw`mt-1`}
+              name='tasklist'
+              size={26}
+              color={colors.secondary}
+            />
+          ) : (
+            <Feather name='moon' size={24} color='black' />
+          )}
         </View>
         <TouchableOpacity style={styles.icon}>
           <Ionicons name='sunny-outline' size={34} color={colors.secondary} />
